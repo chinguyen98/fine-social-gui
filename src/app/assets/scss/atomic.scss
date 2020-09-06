@@ -1,0 +1,60 @@
+@import "src/app/assets/scss/color.scss";
+
+/* align-items*/
+.align-items- {
+  &center {
+    align-items: center;
+  }
+}
+
+/* display */
+.d- {
+  &flex {
+    display: flex;
+  }
+  &block {
+    display: block;
+  }
+}
+
+/* flex-direction */
+.flex- {
+  &row {
+    flex-direction: row;
+  }
+  &column {
+    flex-direction: column;
+  }
+}
+
+/* justify-content*/
+
+.justify-content- {
+  &center {
+    justify-content: center;
+  }
+}
+
+/* Margin */
+.margin- {
+  &auto {
+    margin: auto;
+  }
+}
+
+/* position */
+.position- {
+  &relative {
+    position: relative;
+  }
+  &absolute {
+    position: absolute;
+  }
+}
+
+/* text */
+.text- {
+  &white {
+    color: var(--pure-white);
+  }
+}

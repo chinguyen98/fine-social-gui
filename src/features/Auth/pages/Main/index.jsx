@@ -1,13 +1,17 @@
 import React from 'react';
+import './main.scss';
+import AuthIntro from '../../components/AuthIntro';
 
-Main.propTypes={
+Main.propTypes = {
 
 }
 
-function Main(){
+function Main() {
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <h1>This is Login Page</h1>
+      <div className="main-container">
+        <AuthIntro />
+      </div>
     </div>
   )
 }

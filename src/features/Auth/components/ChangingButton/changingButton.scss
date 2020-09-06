@@ -1,0 +1,12 @@
+@import "src/app/assets/scss/color.scss";
+
+.changing-button {
+  width: 10em;
+  height: 3em;
+  background-color: var(--pure-black-100-transparent);
+  border-radius: 50px;
+  border: 0.2em solid var(--pure-white);
+  color: var(--pure-white);
+  outline: none;
+  cursor: pointer;
+}

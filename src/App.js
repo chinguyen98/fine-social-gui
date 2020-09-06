@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import './App.scss';
-import './atomic.scss';
+import './app/assets/scss/App.scss';
+import './app/assets/scss/atomic.scss';
 import { BrowserRouter, Redirect, Route } from 'react-router-dom';
 import Auth from './features/Auth';
 
