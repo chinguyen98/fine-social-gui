@@ -1,10 +1,10 @@
 import React from 'react';
 
-SignIn.propTypes={
+Main.propTypes={
 
 }
 
-function SignIn(){
+function Main(){
   return (
     <div className="d-flex justify-content-center align-items-center">
       <h1>This is Login Page</h1>
@@ -12,4 +12,4 @@ function SignIn(){
   )
 }
 
-export default SignIn;
+export default Main;

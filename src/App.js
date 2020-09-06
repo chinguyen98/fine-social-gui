@@ -14,7 +14,7 @@ function App() {
       }>
         <BrowserRouter>
           <header className="App-header">
-            <Redirect exact from="/" to="/auth/signin" />
+            <Redirect exact from="/" to="/auth" />
             <Route path="/auth" component={Auth} />
           </header>
         </BrowserRouter>

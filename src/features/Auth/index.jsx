@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import SignIn from './pages/SignIn';
+import Main from './pages/Main';
 
 Auth.propTypes = {
 
@@ -12,7 +12,7 @@ function Auth() {
   return (
     <div>
       <Switch>
-        <Route exact path={`${match.url}/signin`} component={SignIn} />
+        <Route exact path={`${match.url}`} component={Main} />
       </Switch>
     </div>
   )
