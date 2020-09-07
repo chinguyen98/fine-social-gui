@@ -1,35 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './authIntro.scss';
 import ChangingButton from '../ChangingButton';
 import Auths from '../../../../constants/auth';
 
 AuthIntro.propTypes = {
-
+  currentAuth: PropTypes.string,
+  handlingClick: PropTypes.func,
 };
 
-function AuthIntro() {
-  /* begin useState */
-
-  const [currentAuth, setCurrentAuth] = useState(Auths.SIGN_UP);
-
-  /* end useState */
-
-  /* begin custom function */
-
-  function changeCurrentAuth() {
-    currentAuth === Auths.SIGN_IN ? setCurrentAuth(Auths.SIGN_UP) : setCurrentAuth(Auths.SIGN_IN);
-  }
-
-  /* end custom function */
-
-  /*begin useEffect */
-
-  useEffect(() => {
-    console.log({ currentAuth })
-  }, [currentAuth]);
-
-  /*end useEffect */
-
+function AuthIntro({ currentAuth, handlingClick }) {
   return (
     <div
       className={
@@ -55,7 +35,7 @@ function AuthIntro() {
         </p>
         <ChangingButton
           title={`${currentAuth === Auths.SIGN_UP ? Auths.SIGN_IN : Auths.SIGN_UP}`}
-          handlingClick={changeCurrentAuth}
+          handlingClick={handlingClick}
         />
       </div>
     </div>
