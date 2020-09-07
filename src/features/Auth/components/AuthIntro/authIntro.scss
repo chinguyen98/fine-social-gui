@@ -9,20 +9,21 @@
   top: 0;
   background-color: var(--maya-blue);
   height: 100%;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
+  z-index: 999;
 
   &--left {
     left: 0;
     right: 60%;
     border-radius: 40px 0px 0px 40px;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
   }
 
   &--right {
     right: 0;
     left: 60%;
     border-radius: 0px 40px 40px 0px;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
   }
 
   &__firstLine {

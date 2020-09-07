@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './main.scss';
-import AuthIntro from 'features/Auth/components/AuthIntro';
 import Auths from 'constants/auth';
+import AuthIntro from 'features/Auth/components/AuthIntro';
+import AuthForm from 'features/Auth/components/AuthForm';
 
 Main.propTypes = {
 
@@ -16,8 +17,12 @@ function Main() {
 
   /* begin custom function */
 
-  function changeCurrentAuth() {
-    currentAuth === Auths.SIGN_IN ? setCurrentAuth(Auths.SIGN_UP) : setCurrentAuth(Auths.SIGN_IN);
+  function changeCurrentAuthToSignUp() {
+    setCurrentAuth(Auths.SIGN_UP);
+  }
+
+  function changeCurrentAuthToSignIn() {
+    setCurrentAuth(Auths.SIGN_IN);
   }
 
   /* end custom function */
@@ -26,7 +31,10 @@ function Main() {
     <div className="d-flex justify-content-center align-items-center">
       <div className="main-container">
         <AuthIntro
-          handlingClick={changeCurrentAuth}
+          handlingClick={currentAuth === Auths.SIGN_IN ? changeCurrentAuthToSignUp : changeCurrentAuthToSignIn}
+          currentAuth={currentAuth}
+        />
+        <AuthForm
           currentAuth={currentAuth}
         />
       </div>
