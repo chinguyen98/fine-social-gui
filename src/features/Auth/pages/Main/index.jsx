@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './main.scss';
-import AuthIntro from '../../components/AuthIntro';
-import Auths from '../../../../constants/auth';
+import AuthIntro from 'features/Auth/components/AuthIntro';
+import Auths from 'constants/auth';
 
 Main.propTypes = {
 
