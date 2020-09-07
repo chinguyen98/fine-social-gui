@@ -9,4 +9,10 @@
   color: var(--pure-white);
   outline: none;
   cursor: pointer;
+  transition: 0.5s all ease;
+
+  &:hover {
+    color: var(--maya-blue);
+    background-color: var(--pure-white);
+  }
 }

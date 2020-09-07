@@ -4,11 +4,15 @@ import './changingButton.scss';
 
 ChangingButton.propTypes = {
   title: PropTypes.string,
+  handlingClick: PropTypes.func,
 };
 
-function ChangingButton({ title }) {
+function ChangingButton({ title, handlingClick }) {
   return (
-    <button className="changing-button">
+    <button
+      className="changing-button"
+      onClick={handlingClick}
+    >
       {title}
     </button>
   )
