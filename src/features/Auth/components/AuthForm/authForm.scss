@@ -29,25 +29,19 @@
     animation-name: moveToLeft;
     animation-duration: 2s;
     animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(.14,1.24,.53,.77);
+    animation-timing-function: cubic-bezier(0.14, 1.24, 0.53, 0.77);
   }
 }
 
 @keyframes moveToLeft {
   0% {
-    
   }
-  20%{
-    
+  20% {
   }
-  40%{
-
+  40% {
   }
-  60%{
-
+  60% {
   }
   100% {
-    
   }
 }
-
