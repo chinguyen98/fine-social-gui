@@ -8,9 +8,10 @@ SelectOptionOrder.propTypes = {
   max: PropTypes.number,
   classname: PropTypes.string,
   selected: PropTypes.number,
+  name: PropTypes.string,
 };
 
-function SelectOptionOrder({ min, max, selected, classname = 'select-option' }) {
+function SelectOptionOrder({ min, max, selected, name, classname = 'select-option' }) {
   const generateOptionRange = (min, max) => {
     let result = [];
     for (let i = max; i >= min; i--) {

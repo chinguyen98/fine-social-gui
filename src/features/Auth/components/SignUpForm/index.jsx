@@ -3,7 +3,7 @@ import React from "react";
 import "./signUpForm.scss";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
-import SelectOption from "shared-field/SelectOption";
+import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
 
 SignUpForm.propTypes = {};
 
@@ -49,10 +49,8 @@ function SignUpForm() {
             label="Lastname:"
           />
         </FormGroup>
-        <FormGroup>
-          <SelectOption.Day />
-          <SelectOption.Month />
-          <SelectOption.Year />
+        <FormGroup label="Date of birth" style={{marginTop: '1em'}}>
+          <SelectOptionDateGroup />
         </FormGroup>
       </form>
     </div>

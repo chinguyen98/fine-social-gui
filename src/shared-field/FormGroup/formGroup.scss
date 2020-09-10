@@ -1,4 +1,13 @@
 .form-group- {
+  &container {
+    display: flex;
+    flex-direction: column-reverse;
+
+    & > .input-field-label{
+      
+    }
+  }
+
   &auth {
     display: flex;
     flex-direction: row;

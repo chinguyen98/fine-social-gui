@@ -1,3 +1,19 @@
 .select-option {
-  color: red;
+  color: black;
+  outline: none;
+  width: 30%;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 2em;
+  padding: 0.5em;
+  cursor: pointer;
+
+  & option {
+    color: var(--maya-blue);
+    background-color: black;
+  }
+
+  &:hover {
+    box-shadow: var(--focus-input-box-shadow);
+  }
 }
