@@ -1,7 +1,9 @@
 import React from "react";
+
 import "./signUpForm.scss";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
+import SelectOption from "shared-field/SelectOption";
 
 SignUpForm.propTypes = {};
 
@@ -48,7 +50,9 @@ function SignUpForm() {
           />
         </FormGroup>
         <FormGroup>
-          
+          <SelectOption.Day />
+          <SelectOption.Month />
+          <SelectOption.Year />
         </FormGroup>
       </form>
     </div>
