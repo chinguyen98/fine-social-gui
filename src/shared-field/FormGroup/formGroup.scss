@@ -1,0 +1,16 @@
+.form-group- {
+  &auth {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & .input-field-auth {
+      margin: 0 0.5em;
+    }
+
+    & .input-field-label {
+      margin-left: 1em;
+    }
+  }
+}

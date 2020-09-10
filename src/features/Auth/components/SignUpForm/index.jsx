@@ -1,6 +1,7 @@
 import React from "react";
 import "./signUpForm.scss";
 import InputField from "shared-field/InputField";
+import FormGroup from "shared-field/FormGroup";
 
 SignUpForm.propTypes = {};
 
@@ -30,6 +31,25 @@ function SignUpForm() {
           name="pasword"
           label="Confirm password:"
         />
+        <FormGroup>
+          <InputField
+            id="firstname"
+            type="text"
+            placeholder="Firstname"
+            name="firstname"
+            label="Firstname:"
+          />
+          <InputField
+            id="lastname"
+            type="text"
+            placeholder="Lastname"
+            name="lastname"
+            label="Lastname:"
+          />
+        </FormGroup>
+        <FormGroup>
+          
+        </FormGroup>
       </form>
     </div>
   );
