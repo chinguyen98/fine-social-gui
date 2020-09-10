@@ -54,7 +54,16 @@
 
 /* text */
 .text- {
+  /* color*/
   &white {
     color: var(--pure-white);
+  }
+  &maya-blue{
+    color: var(--maya-blue);
+  }
+
+  /*align*/
+  &center {
+    text-align: center;
   }
 }

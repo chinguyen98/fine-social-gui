@@ -1,0 +1,33 @@
+.input-field- {
+  &auth {
+    color: var(--maya-blue);
+    outline: none;
+    border: none;
+    background-color: var(--light-blue-shade);
+    font-size: 1.2em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border-radius: 2em;
+
+    &:focus {
+      & {
+        box-shadow: inset 0 5px 4px 0 hsla(0, 0%, 0%, 0.08);
+      }
+
+      & + .input-field-label{
+        color: var(--maya-blue);
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  &container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &label {
+    margin-left: 0.5em;
+    transition: all 0.5s;
+  }
+}
