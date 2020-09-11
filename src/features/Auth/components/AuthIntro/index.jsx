@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './authIntro.scss';
-import Auths from 'constants/auth';
+import Auths from 'constants/auth.constant';
 import ChangingButton from '../ChangingButton';
 
 AuthIntro.propTypes = {

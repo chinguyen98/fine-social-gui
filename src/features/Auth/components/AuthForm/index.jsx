@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './authForm.scss';
-import Auths from 'constants/auth';
+import Auths from 'constants/auth.constant';
 import SignInForm from '../SignInForm';
 import SignUpForm from '../SignUpForm';
 

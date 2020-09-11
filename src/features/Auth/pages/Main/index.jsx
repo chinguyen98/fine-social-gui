@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './main.scss';
-import Auths from 'constants/auth';
+import Auths from 'constants/auth.constant';
 import AuthIntro from 'features/Auth/components/AuthIntro';
 import AuthForm from 'features/Auth/components/AuthForm';
 
