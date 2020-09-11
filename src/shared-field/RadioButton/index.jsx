@@ -16,8 +16,10 @@ function RadioButton({ name, value, checked }) {
 
   return (
     <div className="radio-button">
-      <label htmlFor={`radio-${value}`} className="radio-button-label">{generateCapitalizeText(value)}
+      <label htmlFor={`radio-${value}`} className="radio-button__label">
+        <span>{generateCapitalizeText(value)}</span>
         <input type="radio" name={name} id={`radio-${value}`} value={value} defaultChecked={checked} />
+        <span className="radio-button__checkmark"></span>
       </label>
     </div>
   )
