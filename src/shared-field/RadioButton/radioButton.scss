@@ -1,0 +1,16 @@
+.radio-button {
+  color: var(--pure-black);
+
+  &:hover{
+    cursor: pointer;
+  }
+
+  & input{
+    margin-left: 1em;
+  }
+
+  &-label {
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+}

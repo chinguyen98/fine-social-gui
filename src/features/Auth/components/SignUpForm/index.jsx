@@ -4,6 +4,8 @@ import "./signUpForm.scss";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
+import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup.";
+import Genders from "constants/gender.constant";
 
 SignUpForm.propTypes = {};
 
@@ -49,8 +51,11 @@ function SignUpForm() {
             label="Lastname:"
           />
         </FormGroup>
-        <FormGroup label="Date of birth" style={{marginTop: '1em'}}>
+        <FormGroup label="Date of birth" style={{ marginTop: '1em' }}>
           <SelectOptionDateGroup />
+        </FormGroup>
+        <FormGroup label="Gender" style={{ marginTop: '1em' }}>
+          <GenderRadioButtonGroup name="gender" checked={Genders.MALE} />
         </FormGroup>
       </form>
     </div>
