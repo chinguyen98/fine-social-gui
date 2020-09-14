@@ -13,54 +13,54 @@ SignUpForm.propTypes = {};
 function SignUpForm() {
   return (
     <div className="sign-up-form--right">
-      <h1 className="text-maya-blue text-center">Create Account</h1>
+      <h1 className="text-maya-blue text-center">Tạo tài khoản mới</h1>
       <div className="sign-up-form">
         <InputField
           id="email"
           type="email"
-          placeholder="Enter your email here!"
+          placeholder="Nhập email vô đây!"
           name="email"
           label="Email:"
         />
         <InputField
           id="password"
           type="password"
-          placeholder="Enter your password here!"
+          placeholder="Nhập mật khẩu vô đây!"
           name="pasword"
-          label="Password:"
+          label="Mật khẩu:"
         />
         <InputField
           id="confirmPassword"
           type="password"
-          placeholder="Enter your confirm password here!"
+          placeholder="Xác nhận lại mật khẩu ở đây!"
           name="pasword"
-          label="Confirm password:"
+          label="Xác nhận mật khẩu:"
         />
         <FormGroup>
           <InputField
             id="firstname"
             type="text"
-            placeholder="Firstname"
+            placeholder="Tên"
             name="firstname"
-            label="Firstname:"
+            label="Tên:"
           />
           <InputField
             id="lastname"
             type="text"
-            placeholder="Lastname"
+            placeholder="Họ"
             name="lastname"
-            label="Lastname:"
+            label="Họ:"
           />
         </FormGroup>
-        <FormGroup label="Date of birth" style={{ marginTop: '1em' }}>
+        <FormGroup label="Ngày sinh" style={{ marginTop: '1em' }}>
           <SelectOptionDateGroup />
         </FormGroup>
-        <FormGroup label="Gender" style={{ marginTop: '1em' }}>
-          <GenderRadioButtonGroup name="gender" checked={Genders.MALE} />
+        <FormGroup label="Giởi tính" style={{ marginTop: '1em' }}>
+          <GenderRadioButtonGroup name="gender" checked={Genders.MALE.value} />
         </FormGroup>
         <FormGroup classname="form-group-button">
           <Button
-            content={"Sign up"}
+            content={"Đăng ký"}
             classname={"btn btn-success margin-t1"}
           />
         </FormGroup>

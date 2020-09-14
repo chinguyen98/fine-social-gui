@@ -13,8 +13,8 @@ GenderRadioButtonGroup.propTypes = {
 function GenderRadioButtonGroup({ name, checked }) {
   return (
     <RadioButtonGroup>
-      <RadioButton name={name} value={Genders.MALE} checked={checked === Genders.MALE} />
-      <RadioButton name={name} value={Genders.FEMALE} checked={checked === Genders.FEMALE} />
+      <RadioButton name={name} value={Genders.MALE.value} label={Genders.MALE.label} checked={checked === Genders.MALE.value} />
+      <RadioButton name={name} value={Genders.FEMALE.value} label={Genders.FEMALE.label} checked={checked === Genders.FEMALE.value} />
     </RadioButtonGroup>
   )
 };

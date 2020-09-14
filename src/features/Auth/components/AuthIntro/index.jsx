@@ -21,20 +21,23 @@ function AuthIntro({ currentAuth, handlingClick }) {
       <div className="d-flex justify-content-center align-items-center flex-column">
         <h1 className="auth-intro__firstLine margin-auto text-white">
           {
-            currentAuth === Auths.SIGN_UP ? 'Welcome Back!' : 'Hello, Friend!'
+            currentAuth === Auths.SIGN_UP ? 'Chào mừng quay trở lại!' : 'Hế lô bạn'
           }
         </h1>
         <p className="auth-intro__secondLine text-white">
-          {
-            currentAuth === Auths.SIGN_UP ? 'To keep connected with other people,' : 'Enter your personal detail'
-          }
-          <br />
-          {
-            currentAuth === Auths.SIGN_UP ? 'please sign in with your personal info' : 'and start journey with us <3'
-          }
+          <span>
+            {
+              currentAuth === Auths.SIGN_UP ? 'Để giữ kết nối với mọi người' : 'Điền thông tin đăng ký của bạn'
+            }
+          </span>
+          <span>
+            {
+              currentAuth === Auths.SIGN_UP ? 'vui lòng đăng nhập tài khoản của bạn!' : 'và bắt đầu khám phá <3'
+            }
+          </span>
         </p>
         <ChangingButton
-          title={`${currentAuth === Auths.SIGN_UP ? Auths.SIGN_IN : Auths.SIGN_UP}`}
+          title={`${currentAuth === Auths.SIGN_UP ? 'Đăng nhập' : 'Đăng ký'}`}
           handlingClick={handlingClick}
         />
       </div>
