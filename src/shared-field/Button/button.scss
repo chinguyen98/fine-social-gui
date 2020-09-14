@@ -1,0 +1,29 @@
+.btn {
+  width: 7em;
+  height: 2em;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  font-size: var(--primary-fs);
+  border-radius: 0.25em;
+  transition: all 0.15s linear;
+
+  &-success {
+    background-color: var(--lime-green);
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: white;
+      color: var(--lime-green);
+      border: 1px solid var(--lime-green);
+    }
+
+    &:active {
+      background-color: var(--pure-black);
+      color: white;
+    }
+  }
+}

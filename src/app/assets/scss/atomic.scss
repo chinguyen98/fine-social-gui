@@ -36,9 +36,21 @@
 }
 
 /* Margin */
-.margin- {
-  &auto {
+.margin {
+  &-auto {
     margin: auto;
+  }
+  &-t1 {
+    margin-top: 1em;
+  }
+  &-t2 {
+    margin-top: 2em;
+  }
+  &-t3 {
+    margin-top: 3em;
+  }
+  &-t4 {
+    margin-top: 4em;
   }
 }
 
@@ -58,7 +70,7 @@
   &white {
     color: var(--pure-white);
   }
-  &maya-blue{
+  &maya-blue {
     color: var(--maya-blue);
   }
 

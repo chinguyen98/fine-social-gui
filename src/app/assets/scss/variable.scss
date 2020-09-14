@@ -3,6 +3,9 @@
   --maya-blue: #4fa1f3;
   --light-blue-shade: #dae0e2;
 
+  /* Green */
+  --lime-green: #45ce30;
+
   /* White */
   --pure-white: #ffffff;
 
@@ -10,5 +13,9 @@
   --pure-black: #000000;
   --pure-black-100-transparent: rgba($color: #000000, $alpha: 0);
 
+  /* Shadow */
   --focus-input-box-shadow: inset 0 5px 4px 0 hsla(0, 0%, 0%, 0.08);
+
+  /* Font size*/
+  --primary-fs: 1.2em;
 }

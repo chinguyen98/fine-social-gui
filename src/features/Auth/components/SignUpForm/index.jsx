@@ -6,6 +6,7 @@ import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
 import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup.";
 import Genders from "constants/gender.constant";
+import Button from "shared-field/Button";
 
 SignUpForm.propTypes = {};
 
@@ -13,7 +14,7 @@ function SignUpForm() {
   return (
     <div className="sign-up-form--right">
       <h1 className="text-maya-blue text-center">Create Account</h1>
-      <form className="sign-up-form">
+      <div className="sign-up-form">
         <InputField
           id="email"
           type="email"
@@ -57,7 +58,13 @@ function SignUpForm() {
         <FormGroup label="Gender" style={{ marginTop: '1em' }}>
           <GenderRadioButtonGroup name="gender" checked={Genders.MALE} />
         </FormGroup>
-      </form>
+        <FormGroup classname="form-group-button">
+          <Button
+            content={"Sign up"}
+            classname={"btn btn-success margin-t1"}
+          />
+        </FormGroup>
+      </div>
     </div>
   );
 }
