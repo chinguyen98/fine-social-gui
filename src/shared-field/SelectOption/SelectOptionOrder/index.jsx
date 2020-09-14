@@ -9,9 +9,10 @@ SelectOptionOrder.propTypes = {
   classname: PropTypes.string,
   selected: PropTypes.number,
   name: PropTypes.string,
+  innerRef: PropTypes.func,
 };
 
-function SelectOptionOrder({ min, max, selected, name, classname = 'select-option' }) {
+function SelectOptionOrder({ min, max, selected, name, innerRef, classname = 'select-option' }) {
   const generateOptionRange = (min, max) => {
     let result = [];
     for (let i = max; i >= min; i--) {
@@ -21,7 +22,7 @@ function SelectOptionOrder({ min, max, selected, name, classname = 'select-optio
   }
 
   return (
-    <select className={classname} defaultValue={selected}>
+    <select ref={innerRef} name={name} className={classname} defaultValue={selected}>
       {
         generateOptionRange(min, max).map(item =>
           <option key={item} value={item}>{item}</option>

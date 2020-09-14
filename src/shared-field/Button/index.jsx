@@ -6,11 +6,12 @@ import './button.scss';
 Button.propTypes = {
   content: PropTypes.string,
   classname: PropTypes.string,
+  buttonType: PropTypes.string,
 };
 
-function Button({ content, classname = 'btn' }) {
+function Button({ content, buttonType = 'button', classname = 'btn' }) {
   return (
-    <button className={classname}>
+    <button type={buttonType} className={classname}>
       {content}
     </button>
   )

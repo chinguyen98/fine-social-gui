@@ -1,17 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import SelectOptionOrder from '..';
 
 Year.propTypes = {
-
+  innerRef: PropTypes.func,
 };
 
-function Year() {
+function Year({ innerRef }) {
   const getCurrentYear = () => {
     return new Date().getFullYear();
   }
 
   return (
-    <SelectOptionOrder min={1990} max={getCurrentYear()} />
+    <SelectOptionOrder name={"year"} innerRef={innerRef} min={1990} max={getCurrentYear()} />
   )
 }
 
