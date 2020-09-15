@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers';
+import * as yup from 'yup';
 
 import "./signUpForm.scss";
 import InputField from "shared-field/InputField";
@@ -16,9 +16,20 @@ SignUpForm.propTypes = {};
 
 function SignUpForm() {
   const schema = yup.object().shape({
-    email: yup.string().required('Vui lòng nhập địa chỉ email!').email('Địa chỉ email không đúng định dạng!'),
-    password: yup.string().required('Vui lòng nhập mật khẩu!').matches(Regex.STRONG_PASSWORD, 'Mật khẩu yếu quá!'),
-    confirmPassword: yup.string().required('Vui lòng nhập lại mật khẩu xác nhận!').oneOf([yup.ref('password')], 'Mật khẩu xác nhận không khớp!'),
+    email: yup.string()
+      .required('Vui lòng nhập địa chỉ email!')
+      .email('Địa chỉ email không đúng định dạng!'),
+    password: yup.string()
+      .required('Vui lòng nhập mật khẩu!')
+      .min(5, 'Mật khẩu tối thiểu 5 kí tự!')
+      .matches(Regex.STRONG_PASSWORD, 'Mật khẩu yếu quá!'),
+    confirmPassword: yup.string()
+      .required('Vui lòng nhập lại mật khẩu xác nhận!')
+      .oneOf([yup.ref('password')], 'Mật khẩu xác nhận không khớp!'),
+    firstname: yup.string()
+      .required('Vui lòng nhập tên!'),
+    lastname: yup.string()
+      .required('Vui lòng nhập họ!'),
   })
 
   const { handleSubmit, register, errors } = useForm({
