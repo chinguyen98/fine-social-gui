@@ -11,10 +11,22 @@ import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/Ge
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
+import { isValidDateOfBirth } from "utils/datetime";
 
 SignUpForm.propTypes = {};
 
 function SignUpForm() {
+  const handlingSignUp = async ({ email, password, firstname, lastname, gender }) => {
+    const { day, month, year } = watch(['day', 'month', 'year']);
+    if (isValidDateOfBirth(day, month, year)) {
+      console.log('OK!');
+    } else {
+      console.log('Not OK!');
+      setError('dateOfBirth', 'required');
+      return false;
+    }
+  };
+
   const schema = yup.object().shape({
     email: yup.string()
       .required('Vui lòng nhập địa chỉ email!')
@@ -30,15 +42,11 @@ function SignUpForm() {
       .required('Vui lòng nhập tên!'),
     lastname: yup.string()
       .required('Vui lòng nhập họ!'),
-  })
-
-  const { handleSubmit, register, errors } = useForm({
-    resolver: yupResolver(schema),
   });
 
-  const handlingSignUp = async (data) => {
-    console.log(data);
-  }
+  const { handleSubmit, register, errors, watch, setError } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   return (
     <div className="sign-up-form--right">
@@ -94,6 +102,7 @@ function SignUpForm() {
         <FormGroup
           label="Ngày sinh"
           style={{ marginTop: '1em' }}
+          errors={errors}
         >
           <SelectOptionDateGroup innerRef={register} />
         </FormGroup>
