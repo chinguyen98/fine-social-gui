@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import './inputField.scss';
+import InputFieldError from "shared-field/InputFieldError";
 
 InputField.propTypes = {
   id: PropTypes.string,
@@ -35,7 +36,7 @@ function InputField({ id, type, value, placeholder, name, label, innerRef, error
         }
         {
           errors !== null
-          && <span className="input-field__error">{errors?.message}</span>
+          && <InputFieldError content={errors?.message} />
         }
       </div>
     </div>

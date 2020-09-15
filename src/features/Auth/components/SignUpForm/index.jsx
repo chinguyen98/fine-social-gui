@@ -68,6 +68,7 @@ function SignUpForm() {
             name="firstname"
             label="Tên:"
             innerRef={register}
+            errors={errors.firstname}
           />
           <InputField
             id="lastname"
@@ -76,6 +77,7 @@ function SignUpForm() {
             name="lastname"
             label="Họ:"
             innerRef={register}
+            errors={errors.lastname}
           />
         </FormGroup>
         <FormGroup
