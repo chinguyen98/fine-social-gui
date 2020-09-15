@@ -11,10 +11,11 @@ InputField.propTypes = {
   placeholder: PropTypes.string,
   classname: PropTypes.string,
   label: PropTypes.string,
+  errors: PropTypes.object,
   innerRef: PropTypes.func,
 };
 
-function InputField({ id, type, value, placeholder, name, label, innerRef, classname = 'input-field-auth' }) {
+function InputField({ id, type, value, placeholder, name, label, innerRef, errors, classname = 'input-field-auth' }) {
   return (
     <div className="input-field-container">
       <input
@@ -26,11 +27,17 @@ function InputField({ id, type, value, placeholder, name, label, innerRef, class
         name={name}
         ref={innerRef}
       />
-      {
-        label !== null
-        &&
-        <label className='input-field-label'><b>{label}</b></label>
-      }
+      <div>
+        {
+          label !== null
+          &&
+          <label className='input-field-label'><b>{label}</b></label>
+        }
+        {
+          errors !== null
+          && <span className="input-field__error">{errors?.message}</span>
+        }
+      </div>
     </div>
   );
 }

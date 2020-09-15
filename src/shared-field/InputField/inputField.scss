@@ -1,5 +1,5 @@
-.input-field- {
-  &auth {
+.input-field {
+  &-auth {
     color: var(--pure-black);
     outline: none;
     border: none;
@@ -14,20 +14,26 @@
         box-shadow: var(--focus-input-box-shadow);
       }
 
-      & + .input-field-label{
+      & + div .input-field-label {
         color: var(--maya-blue);
         font-size: 1.5em;
       }
     }
   }
 
-  &container {
+  &-container {
     display: flex;
     flex-direction: column-reverse;
   }
 
-  &label {
+  &-label {
     margin-left: 0.5em;
     transition: all 0.5s;
+  }
+
+  &__error {
+    color: var(--pure-red);
+    margin-left: 1em;
+    font-weight: bold;
   }
 }
