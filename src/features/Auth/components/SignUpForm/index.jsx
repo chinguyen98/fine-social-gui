@@ -22,7 +22,7 @@ function SignUpForm() {
       console.log('OK!');
     } else {
       console.log('Not OK!');
-      setError('dateOfBirth', 'required');
+      setError('dateOfBirth');
       return false;
     }
   };
