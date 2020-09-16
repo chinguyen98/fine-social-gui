@@ -12,6 +12,7 @@ import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
 import { isValidDateOfBirth } from "utils/datetime";
+import authApi from "api/authApi";
 
 SignUpForm.propTypes = {};
 
@@ -19,7 +20,9 @@ function SignUpForm() {
   const handlingSignUp = async ({ email, password, firstname, lastname, gender }) => {
     const { day, month, year } = watch(['day', 'month', 'year']);
     if (isValidDateOfBirth(day, month, year)) {
-      console.log('OK!');
+      console.log({ email, password, firstname, lastname, gender });
+      const data = await authApi.signUp({ email, password, firstname, lastname, gender, day, month, year });
+      console.log(data);
     } else {
       console.log('Not OK!');
       setError('dateOfBirth');
@@ -79,7 +82,9 @@ function SignUpForm() {
           innerRef={register}
           errors={errors.confirmPassword}
         />
-        <FormGroup>
+        <FormGroup
+          style={{ marginTop: '-1em' }}
+        >
           <InputField
             id="firstname"
             type="text"
@@ -113,7 +118,7 @@ function SignUpForm() {
           <Button
             buttonType={"submit"}
             content={"Đăng ký"}
-            classname={"btn btn-success margin-t1"}
+            classname={"btn btn-success "}
           />
         </FormGroup>
       </form>
