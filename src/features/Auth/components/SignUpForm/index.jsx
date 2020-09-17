@@ -1,9 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
+import { useDispatch } from "react-redux";
 import * as yup from 'yup';
 
 import "./signUpForm.scss";
+import { isValidDateOfBirth } from "utils/datetime";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
@@ -11,18 +13,24 @@ import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/Ge
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
-import { isValidDateOfBirth } from "utils/datetime";
-import authApi from "api/authApi";
+import { signUp } from "app/redux/userSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 SignUpForm.propTypes = {};
 
 function SignUpForm() {
+  const dispatch = useDispatch();
+
   const handlingSignUp = async ({ email, password, firstname, lastname, gender }) => {
     const { day, month, year } = watch(['day', 'month', 'year']);
     if (isValidDateOfBirth(day, month, year)) {
-      console.log({ email, password, firstname, lastname, gender });
-      const data = await authApi.signUp({ email, password, firstname, lastname, gender, day, month, year });
-      console.log(data);
+      try {
+        const actionResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }))
+        const token = unwrapResult(actionResult);
+        console.log({ token });
+      } catch (err) {
+        console.log(err.message);
+      }
     } else {
       console.log('Not OK!');
       setError('dateOfBirth');
