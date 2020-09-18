@@ -6,6 +6,8 @@ import * as yup from 'yup';
 
 import "./signUpForm.scss";
 import { isValidDateOfBirth } from "utils/datetime";
+import { signUp } from "app/redux/userSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
@@ -13,8 +15,7 @@ import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/Ge
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
-import { signUp } from "app/redux/userSlice";
-import { unwrapResult } from "@reduxjs/toolkit";
+import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
 
 SignUpForm.propTypes = {};
 
@@ -25,14 +26,17 @@ function SignUpForm() {
     const { day, month, year } = watch(['day', 'month', 'year']);
     if (isValidDateOfBirth(day, month, year)) {
       try {
-        const actionResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }))
+        dispatch(unsetNotify())
+        const actionResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }));
         const token = unwrapResult(actionResult);
         console.log({ token });
       } catch (err) {
-        console.log(err.message);
+        dispatch(setErrorNotify({
+          label: 'Lỗi',
+          content: err.message,
+        }))
       }
     } else {
-      console.log('Not OK!');
       setError('dateOfBirth');
       return false;
     }
