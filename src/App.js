@@ -23,7 +23,7 @@ function App() {
             <Route path="/auth" component={Auth} />
 
             {
-              popupNotify.isEnable && <PopupNotify content={popupNotify.content} />
+              popupNotify.isEnable && <PopupNotify content={popupNotify.content} type={popupNotify.type} />
             }
           </header>
         </BrowserRouter>

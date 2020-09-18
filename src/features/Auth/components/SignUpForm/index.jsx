@@ -2,12 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
 import { useDispatch } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
 import * as yup from 'yup';
 
 import "./signUpForm.scss";
 import { isValidDateOfBirth } from "utils/datetime";
 import { signUp } from "app/redux/userSlice";
-import { unwrapResult } from "@reduxjs/toolkit";
+import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
@@ -15,7 +16,6 @@ import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/Ge
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
-import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
 
 SignUpForm.propTypes = {};
 
@@ -32,7 +32,6 @@ function SignUpForm() {
         console.log({ token });
       } catch (err) {
         dispatch(setErrorNotify({
-          label: 'Lỗi',
           content: err.message,
         }))
       }

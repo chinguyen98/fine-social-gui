@@ -1,9 +1,42 @@
 .popup-notify {
-  color: var(--pure-white);
   padding: 1em;
   position: fixed;
   right: 0;
   bottom: 15%;
   width: 20%;
-  background-color: var(--pure-red);
+  animation-name: showPopupNotify;
+  animation-duration: 0.5s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  animation-fill-mode: backwards;
+
+  &-error {
+    color: var(--pure-red);
+    border-left: 0.5em solid var(--pure-red);
+    background-color: var(--carousel-pink);
+  }
+
+  &__cancelBtn {
+    color: var(--pure-black);
+    padding: 0.1em;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover {
+      font-size: 1.3em;
+      color: var(--pure-red);
+    }
+  }
+}
+
+@keyframes showPopupNotify {
+  0% {
+    right: -20%;
+  }
+  100% {
+    right: 0;
+  }
 }
