@@ -7,7 +7,11 @@ export const signUp = createAsyncThunk('user/signUp', async (params, thunkAPI) =
     const accessToken = await authApi.signUp(params);
     return accessToken;
   } catch (err) {
-    throw new Error(err.response.data.message);
+    const statusCode = err.response?.data.statusCode;
+    if (statusCode === 409) {
+      throw new Error(err.response.data.message);
+    }
+    throw new Error('Đã có lỗi xảy ra!');
   }
 });
 
