@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import PopupNotify from 'shared-field/PopupNotify';
 
 import './app/assets/scss/App.scss';
@@ -19,7 +19,6 @@ function App() {
       }>
         <BrowserRouter>
           <header className="App-header">
-            <Redirect exact from="/" to="/auth" />
             <Route path="/auth" component={Auth} />
 
             {

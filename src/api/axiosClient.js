@@ -18,8 +18,10 @@ axiosClient.interceptors.request.use(async (config) => {
 });
 
 axiosClient.interceptors.response.use((response) => {
-  if (response && response.data)
+  if (response && response.data?.accessToken) {
+    localStorage.setItem('token', response.data.accessToken);
     return response.data;
+  }
   return response;
 });
 

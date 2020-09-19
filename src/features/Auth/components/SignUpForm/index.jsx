@@ -1,8 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
-import { useDispatch } from "react-redux";
-import { unwrapResult } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from 'yup';
 
 import "./signUpForm.scss";
@@ -16,10 +15,12 @@ import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/Ge
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 SignUpForm.propTypes = {};
 
 function SignUpForm() {
+  const userState = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   const handlingSignUp = async ({ email, password, firstname, lastname, gender }) => {
@@ -27,9 +28,8 @@ function SignUpForm() {
     if (isValidDateOfBirth(day, month, year)) {
       try {
         dispatch(unsetNotify())
-        const actionResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }));
-        const token = unwrapResult(actionResult);
-        console.log({ token });
+        const signUpResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }));
+        unwrapResult(signUpResult);
       } catch (err) {
         dispatch(setErrorNotify({
           content: err.message,
@@ -126,11 +126,22 @@ function SignUpForm() {
           <GenderRadioButtonGroup innerRef={register} name="gender" checked={Genders.MALE.value} />
         </FormGroup>
         <FormGroup classname="form-group-button">
-          <Button
-            buttonType={"submit"}
-            content={"Đăng ký"}
-            classname={"btn btn-success "}
-          />
+          {
+            userState.isLoading && <Button
+              buttonType={"submit"}
+              content={"Đang xử lý...."}
+              classname={"btn btn-pending"}
+              disabled={true}
+              loading={true}
+            />
+          }
+          {
+            !userState.isLoading && <Button
+              buttonType={"submit"}
+              content={"Đăng ký"}
+              classname={"btn btn-success"}
+            />
+          }
         </FormGroup>
       </form>
     </div>

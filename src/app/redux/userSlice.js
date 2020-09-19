@@ -18,13 +18,19 @@ export const signUp = createAsyncThunk('user/signUp', async (params, thunkAPI) =
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    token: {}
+    isLoading: false,
   },
   reducers: {},
   extraReducers: {
-    [signUp.fulfilled]: (state, action) => {
-      state.token = action.payload;
+    [signUp.pending]: (state, action) => {
+      state.isLoading = true;
     },
+    [signUp.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [signUp.rejected]: (state, action) => {
+      state.isLoading = false;
+    }
   },
 });
 
