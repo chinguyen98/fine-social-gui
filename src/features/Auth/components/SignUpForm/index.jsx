@@ -11,7 +11,7 @@ import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
-import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup.";
+import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup";
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
