@@ -8,6 +8,8 @@ import "./signUpForm.scss";
 import { isValidDateOfBirth } from "utils/datetime";
 import { signUp } from "app/redux/userSlice";
 import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useHistory } from "react-router-dom";
 import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
@@ -16,13 +18,13 @@ import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGro
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
-import { unwrapResult } from "@reduxjs/toolkit";
 
 SignUpForm.propTypes = {};
 
 function SignUpForm() {
   const userState = useSelector(state => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handlingSignUp = async ({ email, password, firstname, lastname, gender }) => {
     const { day, month, year } = watch(['day', 'month', 'year']);
@@ -31,6 +33,8 @@ function SignUpForm() {
         dispatch(unsetNotify())
         const signUpResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }));
         unwrapResult(signUpResult);
+        history.push('/auth/verify/account');
+        window.location.reload();
       } catch (err) {
         dispatch(setErrorNotify({
           content: err.message,

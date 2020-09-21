@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import AuthenticatedRoute from 'shared-field/AuthenticatedRoute';
 
 import Main from './pages/Main';
 import VerifyAccount from './pages/VerifyAccount';
@@ -15,7 +16,7 @@ function Auth() {
     <div>
       <Switch>
         <Route exact path={`${match.url}`} component={Main} />
-        <Route exact path={`${match.url}/verify/account`} component={VerifyAccount} />
+        <AuthenticatedRoute exact path={`${match.url}/verify/account`} component={VerifyAccount} />
       </Switch>
     </div>
   )

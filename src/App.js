@@ -20,7 +20,6 @@ function App() {
         <BrowserRouter>
           <header className="App-header">
             <Route path="/auth" component={Auth} />
-
             {
               popupNotify.isEnable && <PopupNotify content={popupNotify.content} type={popupNotify.type} />
             }
