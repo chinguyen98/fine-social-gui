@@ -8,10 +8,11 @@ import "./signUpForm.scss";
 import { isValidDateOfBirth } from "utils/datetime";
 import { signUp } from "app/redux/userSlice";
 import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
+import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup";
 import InputField from "shared-field/InputField";
 import FormGroup from "shared-field/FormGroup";
 import SelectOptionDateGroup from "shared-field/SelectOption/SelectOptionDateGroup";
-import GenderRadioButtonGroup from "shared-field/RadioButton/RadioButtonGroup/GenderRadioButtonGroup";
+
 import Genders from "constants/gender.constant";
 import Button from "shared-field/Button";
 import Regex from "constants/regex.constant";
