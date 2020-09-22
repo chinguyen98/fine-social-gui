@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import AuthenticatedRoute from 'shared-field/AuthenticatedRoute';
 import PopupNotify from 'shared-field/PopupNotify';
 
 import './app/assets/scss/App.scss';
@@ -19,6 +20,7 @@ function App() {
       }>
         <BrowserRouter>
           <header className="App-header">
+            <AuthenticatedRoute path="/" />
             <Route path="/auth" component={Auth} />
             {
               popupNotify.isEnable && <PopupNotify content={popupNotify.content} type={popupNotify.type} />

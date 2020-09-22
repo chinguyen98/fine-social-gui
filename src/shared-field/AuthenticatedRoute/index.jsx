@@ -1,7 +1,6 @@
 import React from 'react';
-import * as jwt from 'jsonwebtoken';
 import { Redirect, Route } from 'react-router-dom';
-import VerifyAccount from 'features/Auth/pages/VerifyAccount';
+import { decodeToken } from 'features/Auth/helper/token.helper';
 
 AuthenticatedRoute.propTypes = {
 
@@ -12,13 +11,11 @@ function AuthenticatedRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props => {
-        const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-        const tokenData = jwt.decode(accessToken);
-        console.log(tokenData);
+        const tokenData = decodeToken();
 
         if (tokenData) {
           if (tokenData.isVerify === false) {
-            return <VerifyAccount />
+            return <Redirect exact to="/auth/verify/account" />
           }
           else {
             return <Component {...props} />
