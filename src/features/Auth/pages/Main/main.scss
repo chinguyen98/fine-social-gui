@@ -2,7 +2,7 @@
   border: 0;
   border-radius: 40px;
   position: relative;
-  box-shadow: 0 3px 6px 0px hsla(0, 0%, 0%, 0.2);
+  box-shadow: var(--container-box-shadow);
   vertical-align: middle;
   width: 80rem;
   height: 40rem;

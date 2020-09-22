@@ -9,6 +9,10 @@
     margin-bottom: 1em;
     border-radius: 2em;
 
+    &-w20 {
+      width: 20em;
+    }
+
     &:focus {
       & {
         box-shadow: var(--focus-input-box-shadow);

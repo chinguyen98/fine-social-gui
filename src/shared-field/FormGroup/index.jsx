@@ -19,9 +19,7 @@ function FormGroup({ children, label, style, errors, classname = 'form-group-aut
       </div>
       <div>
         {
-          label !== null
-          &&
-          <label className='input-field-label'><b>{label}</b></label>
+          label !== undefined && <label className='input-field-label'><b>{label}</b></label>
         }
         {
           errors?.dateOfBirth !== undefined

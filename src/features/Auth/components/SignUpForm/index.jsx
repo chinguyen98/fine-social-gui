@@ -99,7 +99,6 @@ function SignUpForm() {
           errors={errors.confirmPassword}
         />
         <FormGroup
-          style={{ marginTop: '-1em' }}
         >
           <InputField
             id="firstname"
