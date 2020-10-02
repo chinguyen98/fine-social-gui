@@ -40,7 +40,9 @@ function SignUpForm() {
         }))
       }
     } else {
-      setError('dateOfBirth');
+      setError('dateOfBirth', {
+        shouldFocus: false,
+      });
       return false;
     }
   };
@@ -97,8 +99,7 @@ function SignUpForm() {
           innerRef={register}
           errors={errors.confirmPassword}
         />
-        <FormGroup
-        >
+        <FormGroup>
           <InputField
             id="lastname"
             type="text"
