@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
-import { Switch, Route, useRouteMatch, useHistory } from 'react-router-dom';
-import { decodeToken } from './helper/token.helper';
+import React from 'react';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 
+import { decodeToken } from './helper/token.helper';
 import Main from './pages/Main';
-import VerifyAccount from './pages/VerifyAccount';
 
 Auth.propTypes = {
 
@@ -11,30 +10,29 @@ Auth.propTypes = {
 
 function Auth() {
   const match = useRouteMatch();
-  const history = useHistory();
 
-  const check = () => {
-    const tokenData = decodeToken();
-    if (!tokenData) {
-      history.push('/auth');
+  const handleAuthRedirect = () => {
+    const accessToken = decodeToken();
+
+    if (accessToken && accessToken.isVerify) {
+      return '/';
     }
+
+    if (accessToken && !accessToken.isVerify) {
+      return '/verify/email';
+    }
+
+    return null;
   }
-
-  const stableCheck = useCallback(check, []);
-
-  useEffect(() => {
-    stableCheck();
-  }, [stableCheck]);
-
-  useEffect(() => {
-
-  });
 
   return (
     <div>
       <Switch>
-        <Route exact path={`${match.url}`} component={Main} />
-        <Route exact path={`${match.url}/verify/account`} component={VerifyAccount} />
+        <Route exact path={`${match.url}`}>
+          {
+            handleAuthRedirect() !== null ? <Redirect exact to={handleAuthRedirect()} /> : <Main />
+          }
+        </Route>
       </Switch>
     </div>
   )

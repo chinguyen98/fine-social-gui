@@ -10,7 +10,7 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-  const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+  const accessToken = JSON.parse(JSON.stringify(localStorage.getItem('accessToken')));
   if (accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;
   }
@@ -19,10 +19,17 @@ axiosClient.interceptors.request.use(async (config) => {
 
 axiosClient.interceptors.response.use((response) => {
   if (response && response.data?.accessToken) {
-    localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken));
+    localStorage.setItem('accessToken', response.data.accessToken);
     return response.data;
   }
   return response;
+}, (err) => {
+  if (err.response.status === 401) {
+    localStorage.removeItem('accessToken');
+  }
+  else {
+    throw err;
+  }
 });
 
 export default axiosClient;

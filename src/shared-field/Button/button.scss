@@ -35,6 +35,10 @@
     background-color: var(--zircon-gray);
     color: var(--pure-black);
     font-weight: bold;
+
+    &:hover {
+      cursor: progress;
+    }
   }
 
   &__spinner {

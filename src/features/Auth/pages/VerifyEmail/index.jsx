@@ -1,18 +1,26 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
+import { useDispatch, useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 
 import './verifyAccount.scss';
+import { verifyEmail } from 'app/redux/userSlice';
+import { setErrorNotify, unsetNotify } from 'app/redux/notifySlice';
 import InputField from 'shared-field/InputField';
 import FormGroup from 'shared-field/FormGroup';
 import Button from 'shared-field/Button';
 
-VerifyAccount.propTypes = {
+VerifyEmailPage.propTypes = {
 
 };
 
-function VerifyAccount() {
+function VerifyEmailPage() {
+  const userState = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const schema = yup.object().shape({
     verifyCode: yup.string()
@@ -23,8 +31,17 @@ function VerifyAccount() {
     resolver: yupResolver(schema),
   });
 
-  const handlingCheckVerify = () => {
-    console.log('OK')
+  const handlingCheckVerify = async ({ verifyCode: mailCode }) => {
+    try {
+      dispatch(unsetNotify());
+      const verifyEmailResult = await dispatch(verifyEmail({ mailCode }));
+      unwrapResult(verifyEmailResult);
+      history.push('/');
+    } catch (err) {
+      dispatch(setErrorNotify({
+        content: err.message,
+      }))
+    }
   }
 
   return (
@@ -46,8 +63,10 @@ function VerifyAccount() {
           <FormGroup classname="form-group-button">
             <Button
               buttonType={"submit"}
-              content={"Xác nhận"}
-              classname={"btn btn-success"}
+              content={`${userState.isLoading ? 'Đang xác thực' : 'Xác nhận'}`}
+              classname={`${userState.isLoading ? 'btn btn-pending' : 'btn btn-success'}`}
+              disabled={userState.isLoading}
+              loading={userState.isLoading}
             />
           </FormGroup>
         </form>
@@ -56,4 +75,4 @@ function VerifyAccount() {
   )
 };
 
-export default VerifyAccount;
+export default VerifyEmailPage;

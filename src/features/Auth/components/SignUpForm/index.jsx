@@ -33,8 +33,7 @@ function SignUpForm() {
         dispatch(unsetNotify())
         const signUpResult = await dispatch(signUp({ email, password, firstname, lastname, gender, day, month, year }));
         unwrapResult(signUpResult);
-        history.push('/auth/verify/account');
-        window.location.reload();
+        history.push('/verify/email');
       } catch (err) {
         dispatch(setErrorNotify({
           content: err.message,
@@ -101,15 +100,6 @@ function SignUpForm() {
         <FormGroup
         >
           <InputField
-            id="firstname"
-            type="text"
-            placeholder="Tên"
-            name="firstname"
-            label="Tên:"
-            innerRef={register}
-            errors={errors.firstname}
-          />
-          <InputField
             id="lastname"
             type="text"
             placeholder="Họ"
@@ -117,6 +107,15 @@ function SignUpForm() {
             label="Họ:"
             innerRef={register}
             errors={errors.lastname}
+          />
+          <InputField
+            id="firstname"
+            type="text"
+            placeholder="Tên"
+            name="firstname"
+            label="Tên:"
+            innerRef={register}
+            errors={errors.firstname}
           />
         </FormGroup>
         <FormGroup

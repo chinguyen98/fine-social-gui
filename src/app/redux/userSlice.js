@@ -1,4 +1,5 @@
 import authApi from "api/authApi";
+import handleHttpError from "app/helper/handleHttpError";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -7,11 +8,16 @@ export const signUp = createAsyncThunk('user/signUp', async (params, thunkAPI) =
     const accessToken = await authApi.signUp(params);
     return accessToken;
   } catch (err) {
-    const statusCode = err.response?.data.statusCode;
-    if (statusCode === 409) {
-      throw new Error(err.response.data.message);
-    }
-    throw new Error('Đã có lỗi xảy ra!');
+    handleHttpError(err);
+  }
+});
+
+export const verifyEmail = createAsyncThunk('user/verifyEmail', async (params, thunkAPI) => {
+  try {
+    const accessToken = await authApi.verifyEmail(params);
+    return accessToken;
+  } catch (err) {
+    handleHttpError(err);
   }
 });
 
@@ -22,6 +28,7 @@ const userSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
+    //signUp
     [signUp.pending]: (state, action) => {
       state.isLoading = true;
     },
@@ -30,7 +37,17 @@ const userSlice = createSlice({
     },
     [signUp.rejected]: (state, action) => {
       state.isLoading = false;
-    }
+    },
+    //verifyEmail
+    [verifyEmail.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [verifyEmail.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [verifyEmail.rejected]: (state, action) => {
+      state.isLoading = false;
+    },
   },
 });
 

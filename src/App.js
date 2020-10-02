@@ -1,12 +1,14 @@
 import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import AuthenticatedRoute from 'shared-field/AuthenticatedRoute';
-import PopupNotify from 'shared-field/PopupNotify';
 
 import './app/assets/scss/App.scss';
 import './app/assets/scss/atomic.scss';
+import Homepage from 'features/Home';
+import AuthenticatedRoute from 'shared-field/AuthenticatedRoute';
+import PopupNotify from 'shared-field/PopupNotify';
 import Auth from './features/Auth';
+import Verify from 'features/Verify';
 
 function App() {
   const popupNotify = useSelector(state => state.notify);
@@ -20,8 +22,9 @@ function App() {
       }>
         <BrowserRouter>
           <header className="App-header">
-            <AuthenticatedRoute path="/" />
+            <AuthenticatedRoute exact path="/" component={Homepage} />
             <Route path="/auth" component={Auth} />
+            <Route path="/verify" component={Verify} />
             {
               popupNotify.isEnable && <PopupNotify content={popupNotify.content} type={popupNotify.type} />
             }
