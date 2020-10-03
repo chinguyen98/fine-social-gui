@@ -11,7 +11,7 @@ Main.propTypes = {
 function Main() {
   /* begin useState */
 
-  const [currentAuth, setCurrentAuth] = useState(Auths.SIGN_UP);
+  const [currentAuth, setCurrentAuth] = useState(Auths.SIGN_IN);
 
   /* end useState */
 

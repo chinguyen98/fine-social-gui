@@ -31,6 +31,23 @@
     }
   }
 
+  &-primary {
+    background-color: var(--maya-blue);
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: white;
+      color: var(--maya-blue);
+      border: 1px solid var(--maya-blue);
+    }
+
+    &:active {
+      background-color: var(--pure-black);
+      color: white;
+    }
+  }
+
   &-pending {
     background-color: var(--zircon-gray);
     color: var(--pure-black);
