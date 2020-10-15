@@ -23,13 +23,6 @@ axiosClient.interceptors.response.use((response) => {
     return response.data;
   }
   return response;
-}, (err) => {
-  if (err.response.status === 401) {
-    localStorage.removeItem('accessToken');
-  }
-  else {
-    throw err;
-  }
 });
 
 export default axiosClient;

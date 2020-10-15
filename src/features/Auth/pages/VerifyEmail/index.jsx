@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 
 import './verifyAccount.scss';
-import { verifyEmail } from 'app/redux/userSlice';
+import { verifyEmail } from 'app/redux/authSlice';
 import { setErrorNotify, unsetNotify } from 'app/redux/notifySlice';
 import InputField from 'shared-field/InputField';
 import FormGroup from 'shared-field/FormGroup';
@@ -18,7 +18,7 @@ VerifyEmailPage.propTypes = {
 };
 
 function VerifyEmailPage() {
-  const userState = useSelector(state => state.user);
+  const authState = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -63,10 +63,10 @@ function VerifyEmailPage() {
           <FormGroup classname="form-group-button">
             <Button
               buttonType={"submit"}
-              content={`${userState.isLoading ? 'Đang xác thực' : 'Xác nhận'}`}
-              classname={`${userState.isLoading ? 'btn btn-pending' : 'btn btn-success'}`}
-              disabled={userState.isLoading}
-              loading={userState.isLoading}
+              content={`${authState.isLoading ? 'Đang xác thực' : 'Xác nhận'}`}
+              classname={`${authState.isLoading ? 'btn btn-pending' : 'btn btn-success'}`}
+              disabled={authState.isLoading}
+              loading={authState.isLoading}
             />
           </FormGroup>
         </form>

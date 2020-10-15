@@ -21,6 +21,15 @@ export const verifyEmail = createAsyncThunk('user/verifyEmail', async (params, t
   }
 });
 
+export const signIn = createAsyncThunk('user/signIn', async (params, thunkAPI) => {
+  try {
+    const accessToken = await authApi.signIn(params);
+    return accessToken;
+  } catch (err) {
+    handleHttpError(err);
+  }
+});
+
 const userSlice = createSlice({
   name: 'user',
   initialState: {
@@ -46,6 +55,16 @@ const userSlice = createSlice({
       state.isLoading = false;
     },
     [verifyEmail.rejected]: (state, action) => {
+      state.isLoading = false;
+    },
+    //signIn
+    [signIn.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [signIn.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [signIn.rejected]: (state, action) => {
       state.isLoading = false;
     },
   },

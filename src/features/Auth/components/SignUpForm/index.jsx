@@ -6,7 +6,7 @@ import * as yup from 'yup';
 
 import "./signUpForm.scss";
 import { isValidDateOfBirth } from "utils/datetime";
-import { signUp } from "app/redux/userSlice";
+import { signUp } from "app/redux/authSlice";
 import { setErrorNotify, unsetNotify } from "app/redux/notifySlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ import Regex from "constants/regex.constant";
 SignUpForm.propTypes = {};
 
 function SignUpForm() {
-  const userState = useSelector(state => state.user);
+  const authState = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -131,7 +131,7 @@ function SignUpForm() {
         </FormGroup>
         <FormGroup classname="form-group-button">
           {
-            userState.isLoading && <Button
+            authState.isLoading && <Button
               buttonType={"submit"}
               content={"Đang xử lý...."}
               classname={"btn btn-pending"}
@@ -140,7 +140,7 @@ function SignUpForm() {
             />
           }
           {
-            !userState.isLoading && <Button
+            !authState.isLoading && <Button
               buttonType={"submit"}
               content={"Đăng ký"}
               classname={"btn btn-success"}

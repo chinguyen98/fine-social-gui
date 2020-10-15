@@ -7,12 +7,21 @@ import InputField from 'shared-field/InputField';
 import FormGroup from 'shared-field/FormGroup';
 import Button from 'shared-field/Button';
 import { yupResolver } from '@hookform/resolvers';
+import { useDispatch, useSelector } from 'react-redux';
+import { setErrorNotify, unsetNotify } from 'app/redux/notifySlice';
+import { signIn } from 'app/redux/authSlice';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useHistory } from 'react-router-dom';
 
 SignInForm.propTypes = {
 
 };
 
 function SignInForm() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const authState = useSelector(state => state.auth);
+
   const schema = yup.object().shape({
     email: yup.string()
       .email('Vui lòng nhập đúng định dạng email!')
@@ -25,8 +34,17 @@ function SignInForm() {
     resolver: yupResolver(schema),
   });
 
-  const handleSignIn = () => {
-    console.log('ok')
+  const handleSignIn = async ({ email, password }) => {
+    try {
+      dispatch(unsetNotify());
+      const signInResult = await dispatch(signIn({ email, password }));
+      unwrapResult(signInResult);
+      history.push('/');
+    } catch (err) {
+      dispatch(setErrorNotify({
+        content: err.message,
+      }));
+    }
   }
 
   return (
@@ -57,9 +75,11 @@ function SignInForm() {
         />
         <FormGroup classname="form-group-button">
           <Button
-            buttonType="submit"
-            content="Đăng nhập"
-            classname="btn btn-primary"
+            buttonType={"submit"}
+            content={`${authState.isLoading ? 'Đang đăng nhập' : 'Đăng nhập'}`}
+            classname={`${authState.isLoading ? 'btn btn-pending' : 'btn btn-success'}`}
+            disabled={authState.isLoading}
+            loading={authState.isLoading}
           />
         </FormGroup>
       </form>

@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './userSlice';
+import authReducer from './authSlice';
 import notifyReducer from './notifySlice';
 
 const rootReducer = {
-  user: userReducer,
+  auth: authReducer,
   notify: notifyReducer,
 }
 
