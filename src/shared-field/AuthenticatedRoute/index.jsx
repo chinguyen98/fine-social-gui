@@ -15,6 +15,11 @@ function AuthenticatedRoute({ component: Component, ...rest }) {
         const tokenData = decodeToken();
 
         if (tokenData) {
+          const expiredTime = tokenData.exp;
+          if (expiredTime < Date.now() / 1000) {
+            localStorage.removeItem('accessToken');
+            return <Redirect exact to="/auth" />
+          }
           if (tokenData.isVerify === false) {
             return <Redirect exact to="/verify/email" />
           }
